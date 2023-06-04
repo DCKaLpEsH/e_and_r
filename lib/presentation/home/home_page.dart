@@ -1,8 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pcet_placements/presentation/auth/widgets/authentication_page.dart';
+import 'package:pcet_placements/presentation/description/views/description_view.dart';
 import 'package:pcet_placements/presentation/listing/listing_page.dart';
 
 import 'package:pcet_placements/presentation/theme/app_colors.dart';
+import 'package:pcet_placements/presentation/user/views/user_view.dart';
 
 import 'widgets/company_details_card.dart';
 import 'widgets/home_app_bar.dart';
@@ -18,6 +22,7 @@ class HomePage extends StatelessWidget {
     final width = size.width;
     return SafeArea(
       child: Scaffold(
+          // AppBar
           appBar: PreferredSize(
             preferredSize: Size(
               width,
@@ -34,6 +39,7 @@ class HomePage extends StatelessWidget {
               );
             }),
           ),
+          // Body which shows the three statuses, in progress, already applied, finished.
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -57,14 +63,14 @@ class HomePage extends StatelessWidget {
                         children: [
                           TitleBarWidget(
                             title: 'In Progress',
-                            barColor: AppColors.feioja,
+                            barColor: AppColors.casablanca,
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => const ListingPage(
                                     title: 'In Progress',
-                                    barColor: AppColors.feioja,
+                                    barColor: AppColors.casablanca,
                                   ),
                                 ),
                               );
@@ -76,7 +82,7 @@ class HomePage extends StatelessWidget {
                           Expanded(
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: 4,
+                              itemCount: 2,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -89,8 +95,16 @@ class HomePage extends StatelessWidget {
                                   title: 'Company Name',
                                   description:
                                       'Lorem ipsum dolor sit amet, consectetur dipiscing lit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                  onTap: () {},
-                                  buttonColor: AppColors.feioja,
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                        builder: (context) =>
+                                            const DescriptionPage(),
+                                      ),
+                                    );
+                                  },
+                                  buttonColor: AppColors.casablanca,
                                   buttonText: 'Check Eligibility',
                                 );
                               },
@@ -139,7 +153,7 @@ class HomePage extends StatelessWidget {
                           Expanded(
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: 4,
+                              itemCount: 2,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -183,14 +197,14 @@ class HomePage extends StatelessWidget {
                         children: [
                           TitleBarWidget(
                             title: 'Finished',
-                            barColor: AppColors.casablanca,
+                            barColor: AppColors.feioja,
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => const ListingPage(
                                     title: 'Already Applied',
-                                    barColor: AppColors.casablanca,
+                                    barColor: AppColors.feioja,
                                   ),
                                 ),
                               );
@@ -201,7 +215,7 @@ class HomePage extends StatelessWidget {
                           ),
                           Expanded(
                             child: GridView.builder(
-                              itemCount: 4,
+                              itemCount: 2,
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
@@ -216,7 +230,7 @@ class HomePage extends StatelessWidget {
                                   description:
                                       'Lorem ipsum dolor sit amet, consectetur dipiscing lit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                                   onTap: () {},
-                                  buttonColor: AppColors.casablanca,
+                                  buttonColor: AppColors.feioja,
                                   buttonText: 'Not Selected',
                                 );
                               },
@@ -230,6 +244,8 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
+
+          // Left side drawer
           drawer: Container(
             width: width * 0.7,
             height: height - 100,
@@ -266,17 +282,42 @@ class HomePage extends StatelessWidget {
                 DrawerListItemWidget(
                   icon: Icons.edit_document,
                   title: 'Applications',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ListingPage(
+                          title: 'Applications',
+                          barColor: AppColors.feioja,
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 DrawerListItemWidget(
                   icon: Icons.person,
                   title: 'Profile',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  },
                 ),
                 DrawerListItemWidget(
                   icon: Icons.exit_to_app,
                   title: 'Exit',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const AuthenticationPage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
                 ),
               ],
             ),
@@ -298,47 +339,50 @@ class DrawerListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(10),
-          bottomRight: Radius.circular(10),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+          color: AppColors.alto,
         ),
-        color: AppColors.alto,
-      ),
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-      ),
-      child: Row(
-        children: [
-          const SizedBox(
-            width: 10,
-          ),
-          Icon(
-            icon,
-            size: 30,
-            color: const Color(0xFF070707),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF070707),
+        padding: const EdgeInsets.symmetric(
+          vertical: 8,
+        ),
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 10,
             ),
-          ),
-          const Spacer(),
-          const Icon(
-            Icons.arrow_forward_ios,
-            color: Color(0xFFA9A9A9),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-        ],
+            Icon(
+              icon,
+              size: 30,
+              color: const Color(0xFF070707),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF070707),
+              ),
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: Color(0xFFA9A9A9),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

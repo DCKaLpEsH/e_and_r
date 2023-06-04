@@ -27,6 +27,7 @@ class CompanyDetailsCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Text(
             title,
@@ -48,7 +49,7 @@ class CompanyDetailsCard extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 4,
           ),
           Text(
             description,
@@ -57,10 +58,12 @@ class CompanyDetailsCard extends StatelessWidget {
               fontSize: 12,
               fontWeight: FontWeight.w400,
             ),
+            maxLines: 3,
           ),
           const SizedBox(
             height: 8,
           ),
+          const Spacer(),
           Center(
             child: SizedBox(
               width: 140,

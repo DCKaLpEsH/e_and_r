@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "961853833703",
+    "project_id": "nmiet-placements",
+    "storage_bucket": "nmiet-placements.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961853833703:android:6a4cc8838e6eca67757d42",
+        "android_client_info": {
+          "package_name": "com.example.pcet_er"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961853833703-uvsdg1smtuppai24cs1bq6sp8kkol0tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcr5WMFSkiJVtGI_ORie5oIklq1LpfuA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961853833703-uvsdg1smtuppai24cs1bq6sp8kkol0tc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961853833703:android:4b0b6b1b2613eb34757d42",
+        "android_client_info": {
+          "package_name": "nmiet.pcet.pcet_placements"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961853833703-uvsdg1smtuppai24cs1bq6sp8kkol0tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcr5WMFSkiJVtGI_ORie5oIklq1LpfuA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961853833703-uvsdg1smtuppai24cs1bq6sp8kkol0tc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

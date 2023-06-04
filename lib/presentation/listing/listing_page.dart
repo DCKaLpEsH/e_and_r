@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:pcet_placements/presentation/home/widgets/company_details_card.dart';
-
-import 'package:pcet_placements/presentation/home/widgets/home_app_bar.dart';
 import 'package:pcet_placements/presentation/theme/app_colors.dart';
 
 class ListingPage extends StatelessWidget {
@@ -84,6 +82,7 @@ class ListingPage extends StatelessWidget {
               ),
               Expanded(
                 child: GridView.builder(
+                    physics: const BouncingScrollPhysics(),
                     itemCount: 10,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

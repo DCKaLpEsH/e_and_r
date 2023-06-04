@@ -112,7 +112,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "USERNAME",
+                        "EMAIL ID",
                         style: TextStyle(
                           color: AppColors.alto,
                           fontSize: 14,

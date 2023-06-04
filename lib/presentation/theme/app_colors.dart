@@ -9,4 +9,8 @@ class AppColors {
   static const Color hurricane = Color(0xFF958D8D);
   static const Color mercury = Color(0xFFE5E5E5);
   static const Color cornflowerBlue = Color(0xFF4EA6F8);
+  static const List<Color> descriptionGradient = [
+    Color(0xFF2379C9),
+    Color(0xFF5EB0FC),
+  ];
 }
